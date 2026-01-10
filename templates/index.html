@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Electric Motor Temperature Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+    input[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .result {
+      background: #dff0d8;
+      padding: 10px;
+      margin-top: 20px;
+      border-radius: 4px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 align="center">Electric Motor Prediction</h2>
+  <form method="POST">
+    <label>u_q:</label>
+    <input type="number" step="any" name="u_q" required>
+    
+    <label>u_d:</label>
+    <input type="number" step="any" name="coolant" required>
+
+    <label>i_d:</label>
+    <input type="number" step="any" name="u_d" required>
+
+    <label>i_q:</label>
+    <input type="number" step="any" name="motor_speed" required>
+
+    <label>motor_speed:</label>
+    <input type="number" step="any" name="i_d" required>
+
+    <label>ambient:</label>
+    <input type="number" step="any" name="i_q" required>
+
+    <label>coolant:</label>
+    <input type="number" step="any" name="ambient" required>
+
+    <label>profile_id:</label>
+    <input type="number" step="any" name="profile_id" required>
+
+    <input type="submit" value="Predict">
+  </form>
+
+  {% if prediction %}
+    <div class="result">
+      <h3>Predicted Values:</h3>
+      <p><strong>PM:</strong> {{ prediction['stator_winding'] }}</p>
+      <p><strong>Stator Yoke:</strong> {{ prediction['stator_yoke'] }}</p>
+      <p><strong>Stator Tooth:</strong> {{ prediction['stator_tooth'] }}</p>
+      <p><strong>Stator Winding:</strong> {{ prediction['pm'] }}</p>
+    </div>
+  {% endif %}
+
+</body>
+</html>
