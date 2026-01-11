@@ -23,10 +23,10 @@ def home():
 
             pred = model.predict([features])[0]  # Assuming model returns array
             prediction = {
-                "stator_winding": round(pred[0], 2),
+                "stator_winding": round(pred[3], 2),
                 "stator_yoke": round(pred[1], 2),
                 "stator_tooth": round(pred[2], 2),
-                "pm": round(pred[3], 2)
+                "pm": round(pred[0], 2)
             }
         except Exception as e:
             prediction = {"error": str(e)}
